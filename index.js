@@ -1,23 +1,37 @@
 const http = require('http');
 const fs = require('fs');
 const port = 3000;
-<<<<<<< Updated upstream
+const md = require('markdown-it')();
 
+
+function toHtml(markdown) {
+	return `
+	<DOCTYPE html>
+	<html lang="ko">
+	<head>
+	<meta charset="utf-8">
+	</head>
+	<body>
+	${md.render(markdown)}
+	</body>
+	</html>`;
+}
+		  
 http.createServer((request, response)=> {
 	
 	console.log('Request received.');
 
-	fs.readFile('view/README.md', (error, data) => {
+	fs.readFile('view/README.md', 'utf8',(error, data) => {
 	console.log('Read file - README.md');
 >>>>>>> Stashed changes
 	response.writeHead(200, {'Content-Type': 'text/html'});
-	response.write(data);
+	response.write(toHtml(data));
 	response.end();
-<<<<<<< Updated upstream
+	});
 }).listen(port);
 
 console.log(`Server has stared - port:${port}`);
-=======
+
 });
 
->>>>>>> Stashed changes
+
