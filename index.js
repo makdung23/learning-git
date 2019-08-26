@@ -1,7 +1,7 @@
 const http = require('http');
 const port = 3000;
 
-http.createServer(function(request, response) {
+http.createServer((request, response)=> {
 	
 	console.log('요청 수신.');
 	response.writeHead(200, {'Content-Type': 'text/html'});
